@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Omah, an Information and Communication Technology student interested in software engineering and artificial intelligence.">
+  <meta name="theme-color" content="#101827">
+  <title>Omah | ICT Student & Aspiring Software Developer</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #657087;
+      --paper: #f7f9fc;
+      --surface: #ffffff;
+      --line: #e4e9f1;
+      --navy: #101827;
+      --blue: #3569d4;
+      --blue-soft: #edf3ff;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(247,249,252,.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.2rem; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; align-items: center; gap: 26px; color: #4e5b70; font-size: .92rem; }
+    .navlinks a:hover { color: var(--blue); }
+    .menu { display: none; border: 1px solid var(--line); background: white; border-radius: 9px; padding: 8px 12px; color: var(--ink); }
+    .hero { background: var(--navy); color: white; padding: 104px 0 92px; overflow: hidden; position: relative; }
+    .hero:after { content: ""; position: absolute; width: 440px; height: 440px; border: 1px solid rgba(130,166,255,.18); border-radius: 50%; right: -130px; top: -190px; box-shadow: 0 0 0 55px rgba(130,166,255,.035), 0 0 0 110px rgba(130,166,255,.025); }
+    .hero-inner { position: relative; z-index: 1; max-width: 760px; }
+    .eyebrow { color: #9db9ff; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; }
+    h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.06; letter-spacing: -.055em; margin: 18px 0; }
+    h1 span { color: #91b0ff; }
+    .hero p { max-width: 660px; color: #c4ccda; font-size: 1.1rem; margin: 0 0 30px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 9px; font-weight: 700; font-size: .92rem; transition: .2s ease; }
+    .btn.primary { background: #fff; color: var(--navy); }
+    .btn.primary:hover { background: #e9efff; transform: translateY(-2px); }
+    .btn.ghost { border: 1px solid #536078; color: white; }
+    .btn.ghost:hover { border-color: #a9c0ff; color: #a9c0ff; }
+    section { padding: 78px 0; }
+    .section-head { max-width: 650px; margin-bottom: 30px; }
+    .kicker { color: var(--blue); text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.55rem); line-height: 1.2; letter-spacing: -.04em; margin: 8px 0 12px; }
+    .lead { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 44px; align-items: start; }
+    .about-copy p { color: #566176; margin-top: 0; }
+    .info-card, .project, .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 15px; }
+    .info-card { padding: 24px; }
+    .info-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .info-row:last-child { border: 0; padding-bottom: 0; }
+    .info-row small { display: block; color: var(--muted); font-size: .78rem; margin-bottom: 2px; }
+    .info-row strong { font-size: .96rem; }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project { padding: 26px; display: flex; flex-direction: column; min-height: 290px; }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 11px; background: var(--blue-soft); color: var(--blue); font-weight: 900; }
+    .status { font-size: .72rem; color: #52627c; background: #f0f3f8; padding: 5px 9px; border-radius: 30px; font-weight: 700; }
+    .project h3 { margin: 20px 0 8px; font-size: 1.25rem; letter-spacing: -.02em; }
+    .project p { color: var(--muted); margin: 0 0 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .tag { font-size: .75rem; color: #42516b; background: #f1f4f9; border-radius: 6px; padding: 5px 8px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .skill-card { padding: 20px; }
+    .skill-card h3 { margin: 0 0 6px; font-size: 1rem; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .education { background: #eef2f8; }
+    .edu-card { background: white; border: 1px solid #e0e6ef; border-radius: 14px; padding: 25px; max-width: 720px; }
+    .edu-card h3 { margin: 0 0 4px; }
+    .edu-card p { color: var(--muted); margin: 0; }
+    .contact-card { background: var(--navy); color: white; padding: 38px; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact-card p { color: #c4ccda; margin: 8px 0 0; }
+    footer { padding: 25px 0; color: var(--muted); font-size: .84rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 720px) {
+      .navlinks { display: none; position: absolute; top: 69px; left: 0; right: 0; padding: 18px 22px; background: white; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 14px; }
+      .navlinks.open { display: flex; }
+      .menu { display: block; }
+      .hero { padding: 78px 0 72px; }
+      section { padding: 60px 0; }
+      .about-grid, .projects, .skills-grid { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#home">OMAH<span>.</span></a>
+        <button class="menu" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menu</button>
+        <div class="navlinks" id="navLinks">
+          <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="hero-inner">
+          <div class="eyebrow">ICT Student · Aspiring Software Developer</div>
+          <h1>Hi, I'm Omah.<br>I enjoy building <span>useful technology.</span></h1>
+          <p>I'm an Information and Communication Technology student interested in software engineering and artificial intelligence. I'm learning, building, and developing the skills to solve real-world problems with technology.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore my work</a>
+            <a class="btn ghost" href="https://github.com/Omah17" target="_blank" rel="noopener noreferrer">Visit my GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">A little about me</div>
+          <h2>Curious by nature. Building with purpose.</h2>
+          <p class="lead">I'm at the early stage of my development journey, focused on learning the fundamentals and applying them through practical projects.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I'm studying for a B.Sc. in Information and Communication Technology at Adekunle Ajasin University, Nigeria. My academic background has strengthened my interest in how computing and digital systems can improve the way people learn, work, and manage everyday tasks.</p>
+            <p>I'm currently strengthening my programming foundation, particularly in Python, while exploring software development and practical uses of AI. I value clear problem-solving, continuous learning, and building solutions around real needs.</p>
+            <p>I'm open to internships, learning opportunities, and collaborations that will help me gain practical experience and contribute to meaningful work.</p>
+          </div>
+          <aside class="info-card" aria-label="Quick information">
+            <div class="info-row"><small>Current focus</small><strong>Programming & software development</strong></div>
+            <div class="info-row"><small>Learning</small><strong>Python and software fundamentals</strong></div>
+            <div class="info-row"><small>Interests</small><strong>Artificial Intelligence · Web applications</strong></div>
+            <div class="info-row"><small>Location</small><strong>Nigeria</strong></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="background:#f0f3f8">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Selected work</div>
+          <h2>Ideas I'm exploring</h2>
+          <p class="lead">These project concepts reflect the kinds of problems I want to work on. Their implementation status is stated clearly.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><div class="project-mark">U</div><span class="status">Project concept</span></div>
+            <h3>UNIVAULT</h3>
+            <p>A student academic resource platform concept designed to organise learning materials by department, level, semester, and course. It aims to make notes, textbooks, past questions, and useful learning links easier to find.</p>
+            <div class="tags"><span class="tag">EdTech</span><span class="tag">Education</span><span class="tag">AI-assisted learning concept</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><div class="project-mark">T</div><span class="status">Project concept</span></div>
+            <h3>TrackShield</h3>
+            <p>A financial security and spending clarity concept exploring how transaction monitoring, suspicious-activity alerts, and spending summaries could help people better understand and protect their money.</p>
+            <div class="tags"><span class="tag">FinTech</span><span class="tag">Fraud detection concept</span><span class="tag">Personal finance</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Skills & interests</div>
+          <h2>What I'm learning</h2>
+          <p class="lead">A snapshot of my current foundation and the areas I'm actively exploring.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card"><h3>Python</h3><p>Beginner level; practising programming fundamentals, conditionals, collections, and problem-solving.</p></div>
+          <div class="skill-card"><h3>Software engineering</h3><p>Interested in how applications are planned, designed, built, tested, and improved.</p></div>
+          <div class="skill-card"><h3>Artificial intelligence</h3><p>Exploring AI concepts and practical ways intelligent tools can support useful applications.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Education</div>
+          <h2>My academic background</h2>
+        </div>
+        <div class="edu-card">
+          <h3>B.Sc. Information and Communication Technology</h3>
+          <p>Adekunle Ajasin University (AAUA), Nigeria</p>
+          <p style="margin-top:10px">Undergraduate student · Faculty of Computing</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div>
+            <div class="kicker" style="color:#9db9ff">Let's connect</div>
+            <h2 style="margin-bottom:0">Interested in working together?</h2>
+            <p>I'm open to internships, collaborations, and opportunities to learn.</p>
+          </div>
+          <a class="btn primary" href="https://github.com/Omah17" target="_blank" rel="noopener noreferrer">Connect on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© <span id="year"></span> Omah. Built with care.</span><a href="https://github.com/Omah17" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+  </script>
+</body>
+</html>
